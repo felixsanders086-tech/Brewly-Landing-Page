@@ -1,0 +1,539 @@
+/* =========================================================
+   DESIGN TOKENS
+   Semua warna, font, dan ukuran utama dikumpulkan di sini
+   supaya gampang diubah tanpa cari-cari di seluruh file.
+   ========================================================= */
+:root {
+  --color-bg: #fbf7f2;
+  --color-bg-dark: #1e140d;
+  --color-text: #2b1b12;
+  --color-text-light: #fbf7f2;
+  --color-muted: #8c7364;
+  --color-accent: #c17817;
+  --color-accent-light: #e8a33d;
+  --color-border: #e4d9cb;
+
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Karla', sans-serif;
+
+  --container-width: 1120px;
+  --radius: 14px;
+}
+
+/* =========================================================
+   RESET DASAR
+   ========================================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+ul, ol { list-style: none; }
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 600;
+  text-align: left;
+  margin-bottom: 40px;
+  max-width: 20ch;
+}
+
+/* =========================================================
+   TOMBOL
+   ========================================================= */
+.btn {
+  display: inline-block;
+  padding: 13px 26px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.btn--primary {
+  background: var(--color-accent);
+  color: var(--color-text-light);
+}
+
+.btn--primary:hover {
+  background: var(--color-accent-light);
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn--large {
+  padding: 16px 34px;
+  font-size: 1.05rem;
+}
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-bg);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Kelas ini ditambahkan lewat JS saat halaman di-scroll ke bawah */
+.navbar--scrolled {
+  box-shadow: 0 2px 14px rgba(30, 20, 13, 0.08);
+  border-bottom-color: var(--color-border);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.navbar__logo {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Menu disembunyikan di mobile secara default, muncul sebagai panel saat toggle aktif */
+.navbar__menu {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 12px 20px 20px;
+  transform: translateY(-8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.navbar__menu--open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.navbar__link {
+  padding: 12px 4px;
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__link--cta {
+  color: var(--color-accent);
+  font-weight: 700;
+  border-bottom: none;
+}
+
+.navbar__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+}
+
+.navbar__toggle-bar {
+  display: block;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Saat menu terbuka, tiga garis hamburger berubah jadi tanda silang (X) */
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar__toggle[aria-expanded="true"] .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero {
+  padding: 56px 0 64px;
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 600;
+  line-height: 1.12;
+  max-width: 14ch;
+}
+
+.hero__subtitle {
+  margin-top: 18px;
+  color: var(--color-muted);
+  font-size: 1.05rem;
+  max-width: 42ch;
+}
+
+.hero__actions {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.hero__art {
+  display: flex;
+  justify-content: center;
+}
+
+/* Ilustrasi cangkir kopi sederhana, murni dibentuk dari CSS */
+.coffee-cup {
+  position: relative;
+  width: 180px;
+}
+
+.coffee-cup__body {
+  width: 180px;
+  height: 140px;
+  background: var(--color-bg-dark);
+  border-radius: 0 0 60px 60px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.coffee-cup__liquid {
+  width: 100%;
+  height: 26px;
+  background: var(--color-accent);
+  border-radius: 0 0 4px 4px;
+}
+
+.coffee-cup__handle {
+  position: absolute;
+  right: -26px;
+  top: 40px;
+  width: 34px;
+  height: 44px;
+  border: 10px solid var(--color-bg-dark);
+  border-left: none;
+  border-radius: 0 22px 22px 0;
+}
+
+.coffee-cup__steam {
+  position: absolute;
+  top: -34px;
+  width: 6px;
+  height: 30px;
+  background: var(--color-accent-light);
+  border-radius: 6px;
+  opacity: 0.55;
+  animation: steam 2.4s ease-in-out infinite;
+}
+
+.coffee-cup__steam--1 { left: 46px; animation-delay: 0s; }
+.coffee-cup__steam--2 { left: 88px; animation-delay: 0.4s; }
+.coffee-cup__steam--3 { left: 130px; animation-delay: 0.8s; }
+
+@keyframes steam {
+  0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.5; }
+  50% { transform: translateY(-10px) scaleY(1.15); opacity: 0.15; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee-cup__steam { animation: none; }
+}
+
+/* =========================================================
+   FITUR
+   ========================================================= */
+.features {
+  padding: 60px 0;
+}
+
+.features__grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 1fr;
+}
+
+.feature-card {
+  padding: 28px 24px;
+  border-top: 3px solid var(--color-accent);
+  background: #fff;
+}
+
+.feature-card__icon {
+  width: 30px;
+  height: 30px;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.feature-card__title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-card__text {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   CARA KERJA
+   ========================================================= */
+.how-it-works {
+  padding: 60px 0;
+  background: var(--color-bg-dark);
+  color: var(--color-text-light);
+}
+
+.how-it-works .section-title { color: var(--color-text-light); }
+
+.steps {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: 1fr;
+}
+
+.step__number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--color-accent-light);
+  border-radius: 50%;
+  font-family: var(--font-display);
+  color: var(--color-accent-light);
+  margin-bottom: 14px;
+}
+
+.step__title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.step__text {
+  color: #cbb9a9;
+  font-size: 0.95rem;
+  max-width: 38ch;
+}
+
+/* =========================================================
+   FAQ (accordion)
+   ========================================================= */
+.faq {
+  padding: 60px 0;
+}
+
+.faq__list {
+  max-width: 720px;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 4px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.faq-item__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--color-accent);
+  transition: transform 0.2s ease;
+}
+
+/* Ikon panah berputar 180 derajat saat item FAQ terbuka */
+.faq-item--open .faq-item__icon {
+  transform: rotate(180deg);
+}
+
+/* Jawaban disembunyikan dengan max-height 0, lalu dibuka lewat transition
+   saat class "faq-item--open" ditambahkan oleh script.js */
+.faq-item__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.faq-item__answer p {
+  color: var(--color-muted);
+  padding: 0 4px 20px;
+  max-width: 60ch;
+}
+
+/* =========================================================
+   CTA
+   ========================================================= */
+.cta {
+  padding: 70px 0;
+}
+
+.cta__inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  max-width: 20ch;
+}
+
+.cta__text {
+  color: var(--color-muted);
+  margin-bottom: 14px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer {
+  padding: 32px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer__text {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET (>= 600px)
+   ========================================================= */
+@media (min-width: 600px) {
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — DESKTOP (>= 1024px)
+   ========================================================= */
+@media (min-width: 1024px) {
+  .navbar__toggle { display: none; }
+
+  .navbar__menu {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    padding: 0;
+    background: none;
+    border: none;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .navbar__link {
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .hero__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hero__text { flex: 1; }
+  .hero__art { flex: 1; }
+
+  .features__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
