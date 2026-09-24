@@ -230,6 +230,10 @@ footer{
         gap: 20px;
     }
 
+    .hero-btn{
+        justify-content: center;
+    }
+
     .hero-text h1{
         font-size:38px;
     }
