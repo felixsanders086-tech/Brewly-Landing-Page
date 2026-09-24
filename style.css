@@ -79,7 +79,7 @@ h1,h2,h3{
 }
 
 .hero-image img{
-    width:280px;
+    width:240px;
     max-width:100%;
     height:auto;
 }
@@ -225,8 +225,9 @@ footer{
     }
 
     .hero-content{
-        flex-direction:column;
-        text-align:center;
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 20px;
     }
 
     .hero-text h1{
