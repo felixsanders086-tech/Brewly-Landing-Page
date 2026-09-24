@@ -14,21 +14,18 @@ Brewly adalah website landing page bertema coffee shop yang dibuat sebagai tugas
 
 ### Desktop
 
-![Desktop 1](assets/desktop1.png)
+<img src="assets/desktop1.png" width="700">
 
-![Desktop 2](assets/desktop2.png)
+<img src="assets/desktop2.png" width="700">
 
 ### Mobile
 
-![Mobile 1](assets/mobile1.jpeg)
-
-![Mobile 2](assets/mobile2.jpeg)
-
-![Mobile 3](assets/mobile3.jpeg)
-
-![Mobile 4](assets/mobile4.jpeg)
+<img src="assets/mobile1.jpeg" width="220">
+<img src="assets/mobile2.jpeg" width="220">
+<img src="assets/mobile3.jpeg" width="220">
+<img src="assets/mobile4.jpeg" width="220">
 
 ## Deployment
 
-- **GitHub Repository:** <Link url="https://github.com/felixsanders086-tech/Brewly-Landing-Page" title="Brewly-Landing-Page"/>
-- **Netlify:** <Link url="https://playful-scone-b9d86c.netlify.app" title="playful-scone-b9d86c.netlify.app"/>
+- **GitHub Repository:** [Brewly Landing Page](https://github.com/felixsanders086-tech/Brewly-Landing-Page)
+- **Netlify:** [playful-scone-b9d86c.netlify.app](https://playful-scone-b9d86c.netlify.app)
